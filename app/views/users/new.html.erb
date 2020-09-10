@@ -1,1 +1,30 @@
-<p>This will be the page to create new users</p>
+<div class="outer_container">
+    <div class="container">
+        <div class="row login_card">
+
+            <div class="col s4 offset-s4">
+                <div class="card large">
+                    <div class="card-content">
+                        <span class="card-title center">Sign Up</span>
+                        <%= form_with model: @user, url: users_create_path do |f| %>
+                            <%= f.label "Name" %>
+                            <%= f.text_field :name %>
+
+                            <%= f.label "email" %>
+                            <%= f.text_field :email %>
+
+                            <%= f.label "Password" %>
+                            <%= f.password_field :password %>
+
+                            <%= f.label "Confirm Password" %>
+                            <%= f.password_field :password_confirmation %>
+
+                            <button class="waves-effect waves-light btn blue center" type="submit">Sign Up</button>
+                        <% end %>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
