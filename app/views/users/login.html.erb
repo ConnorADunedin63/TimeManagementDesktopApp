@@ -5,7 +5,12 @@
                 <div class="card medium">
                     <div class="card-content">
                         <span class="card-title center">Login</span>
-                        <%= form_with url: users_create_path do |f| %>
+                        <% flash.each do |type, message| %>
+                            <div class="center">
+                            <span class="alert_message"><%= message %></span>
+                            </div>
+                        <% end %>
+                        <%= form_with url: users_authentication_path do |f| %>
                             <%= f.label "email" %>
                             <%= f.text_field :email %>
 
