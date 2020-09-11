@@ -41,13 +41,15 @@ class UsersController < ApplicationController
 
         if @user.present?
             # If the user with the email is present, try authenticating with password
-            if @user.authenticate(params[:password]) == false
+            if @user.authenticate(params[:password]) != false
                 # Redirect to the user's show page
                 redirect_to "/users/#{@user.id}"
+                return
             end
         end
         # Incorrect email or password
-        redirect_to users_login_path, alert: "Incorrect email or password"
+        flash[:incorrect] = "Incorrect email or password"
+        redirect_to users_login_path
     end
 
     def show
