@@ -1,12 +1,11 @@
 <div class="outer_container">
     <div class="container">
         <div class="row login_card">
-
             <div class="col s4 offset-s4">
                 <div class="card large">
                     <div class="card-content">
                         <span class="card-title center">Sign Up</span>
-                        <%= form_with model: @user, url: users_create_path do |f| %>
+                        <%= form_with model: @user, url: signup_path do |f| %>
                             <%= f.label "Name" %>
                             <%= f.text_field :name %>
 
@@ -23,7 +22,9 @@
                                 <button class="waves-effect waves-light btn blue center" type="submit">Sign Up</button>
                             </div>
                         <% end %>
-                        
+                        <div class="center login_signup_link">
+                            <%= link_to "Already have an account? Login", login_path %>
+                        </div>
                     </div>
                 </div>
             </div>

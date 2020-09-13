@@ -10,7 +10,7 @@
                             <span class="alert_message"><%= message %></span>
                             </div>
                         <% end %>
-                        <%= form_with url: users_authentication_path do |f| %>
+                        <%= form_with url: authentication_path do |f| %>
                             <%= f.label "email" %>
                             <%= f.text_field :email %>
 
@@ -22,7 +22,7 @@
                             </div>
                         <% end %>
                         <div class="center login_signup_link">
-                            <%= link_to "Don't have an account? Sign Up", users_new_path %>
+                            <%= link_to "Don't have an account? Sign Up", signup_path %>
                         </div>
                     </div>
                 </div>

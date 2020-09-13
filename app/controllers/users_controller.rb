@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-    def welcome
-
-    end
+    skip_before_action :authorized, only: [:new, :create]
     
     def new
         @user = User.new
@@ -13,47 +11,12 @@ class UsersController < ApplicationController
 
         if @user.save
             # If user is successfully saved redirect to user show page
-            redirect_to "/users/#{@user.id}"
+            session[:user_id] = @user.id
+            redirect_to authorized_path
         else
             # If the user could not be saved, display errors
-            render users_new_path
+            render signup_path
         end
-    end
-
-    def login 
-    end
-
-    def authenticate
-        # Both the email and password should be present
-        unless params[:email].present? && params[:password].present?
-            if !params[:email].present?
-                flash[:blank_email] = "Email cannot be blank!"
-            end
-    
-            if !params[:password].present?
-                flash[:blank_password] = "Password cannot be blank!"
-            end
-            redirect_to users_login_path
-            return
-        end
-
-        @user = User.find_by(email: params[:email])
-
-        if @user.present?
-            # If the user with the email is present, try authenticating with password
-            if @user.authenticate(params[:password]) != false
-                # Redirect to the user's show page
-                redirect_to "/users/#{@user.id}"
-                return
-            end
-        end
-        # Incorrect email or password
-        flash[:incorrect] = "Incorrect email or password"
-        redirect_to users_login_path
-    end
-
-    def show
-
     end
 
     def user_params
