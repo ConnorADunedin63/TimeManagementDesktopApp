@@ -22,4 +22,32 @@ RSpec.describe "Session requests", type: :request do
         post login_path, params: {email: "john@testUser.com", password: "test123"}
         expect(response).to redirect_to(action: "page_requires_login")
     end
+
+    it "should render the login page if the email is blank." do
+        testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
+        expect(User.count).to eq 1
+        post login_path, params: {email: "", password: "test123"}
+        expect(response).to redirect_to(action: "create")
+    end
+
+    it "should render the login page if the password is blank." do
+        testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
+        expect(User.count).to eq 1
+        post login_path, params: {email: "john@testUser.com", password: ""}
+        expect(response).to redirect_to(action: "create")
+    end
+
+    it "should render the login page if the email is incorrect." do
+        testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
+        expect(User.count).to eq 1
+        post login_path, params: {email: "invalid@example.com", password: "test123"}
+        expect(response).to redirect_to(action: "create")
+    end
+
+    it "should render the login page if the password is incorrect." do
+        testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
+        expect(User.count).to eq 1
+        post login_path, params: {email: "john@testUser.com", password: "Invalid password"}
+        expect(response).to redirect_to(action: "create")
+    end
 end
