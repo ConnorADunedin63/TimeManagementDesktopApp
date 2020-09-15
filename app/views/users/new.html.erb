@@ -3,9 +3,16 @@
         <div class="row login_card">
             <div class="col s4 offset-s4">
                 <div class="card large">
-                    <div class="card-content">
+                    <div class="card-content sign_up_scroll">
                         <span class="card-title center">Sign Up</span>
                         <%= form_with model: @user, url: signup_path do |f| %>
+                            <% if flash[:errors].present? %>
+                                <% flash[:errors].each do |e| %>
+                                    <div class="center">
+                                        <span class="alert_message"><%= e %></span>
+                                    </div>
+                                <% end %>
+                            <% end %>
                             <%= f.label "Name" %>
                             <%= f.text_field :name %>
 

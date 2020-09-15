@@ -15,7 +15,8 @@ class UsersController < ApplicationController
             redirect_to authorized_path
         else
             # If the user could not be saved, display errors
-            render signup_path
+            flash[:errors] = @user.errors.full_messages
+            redirect_to signup_path
         end
     end
 
