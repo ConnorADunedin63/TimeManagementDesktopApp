@@ -43,7 +43,8 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 4.0.1'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
