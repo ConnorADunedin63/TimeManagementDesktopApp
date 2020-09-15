@@ -18,6 +18,12 @@ $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import "materialize";
 
+div.outer_container {
+    margin: 0;
+    background-color: #20639B;
+    height: 100vh;
+}
+
 div.login_card {
     padding-top: 15%;
 }

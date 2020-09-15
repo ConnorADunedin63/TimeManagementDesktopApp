@@ -7,7 +7,7 @@
                         <span class="card-title center">Login</span>
                         <% flash.each do |type, message| %>
                             <div class="center">
-                            <span class="alert_message"><%= message %></span>
+                                <span class="alert_message"><%= message %></span>
                             </div>
                         <% end %>
                         <%= form_with url: authentication_path do |f| %>

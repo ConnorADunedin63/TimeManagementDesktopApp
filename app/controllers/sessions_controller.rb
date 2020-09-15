@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     if @user.present?
         # If the user with the email is present, try authenticating with password
         if @user.authenticate(params[:password]) != false
-            sessions[:user_id] = @user.id
+            session[:user_id] = @user.id
             # Redirect to the user's show page
             redirect_to authorized_path
             return
