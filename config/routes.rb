@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#create', as: 'authentication'
 
-  get '/authorized', to:  'sessions#page_requires_login'
+  get '/dashboard', to:  'sessions#dashboard'
 end
