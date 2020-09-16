@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         if @user.authenticate(params[:password]) != false
             session[:user_id] = @user.id
             # Redirect to the user's show page
-            redirect_to authorized_path
+            redirect_to dashboard_path
             return
         end
     end
@@ -36,6 +36,6 @@ class SessionsController < ApplicationController
   def welcome
   end
 
-  def page_requires_login
+  def dashboard
   end
 end

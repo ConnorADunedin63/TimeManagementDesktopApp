@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row login_card">
             <div class="col s4 offset-s4">
-                <div class="card large">
+                <div class="card">
                     <div class="card-content sign_up_scroll">
                         <span class="card-title center">Sign Up</span>
                         <%= form_with model: @user, url: signup_path do |f| %>
@@ -13,17 +13,30 @@
                                     </div>
                                 <% end %>
                             <% end %>
-                            <%= f.label "Name" %>
-                            <%= f.text_field :name %>
-
-                            <%= f.label "email" %>
-                            <%= f.text_field :email %>
-
-                            <%= f.label "Password" %>
-                            <%= f.password_field :password %>
-
-                            <%= f.label "Confirm Password" %>
-                            <%= f.password_field :password_confirmation %>
+                            <div class="row">
+                                <div class="col s12 input-field">
+                                    <%= f.label "Name" %>
+                                    <%= f.text_field :name%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 input-field">
+                                    <%= f.label "Email" %>
+                                    <%= f.text_field :email %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 input-field">
+                                    <%= f.label "Password" %>
+                                    <%= f.password_field :password %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 input-field">
+                                    <%= f.label "Confirm Password" %>
+                                    <%= f.password_field :password_confirmation %>
+                                </div>
+                            </div>
 
                             <div class="center">
                                 <button class="waves-effect waves-light btn blue center" type="submit">Sign Up</button>

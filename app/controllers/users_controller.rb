@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         if @user.save
             # If user is successfully saved redirect to user show page
             session[:user_id] = @user.id
-            redirect_to authorized_path
+            redirect_to dashboard_path
         else
             # If the user could not be saved, display errors
             flash[:errors] = @user.errors.full_messages
