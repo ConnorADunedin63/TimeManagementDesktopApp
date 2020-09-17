@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'goals/index'
+
+  get 'goals/new'
+
+  get 'goals/show'
+
+  get 'goals/edit'
+
+  get 'goals/destroy'
+
   get '/welcome', to: 'sessions#welcome'
 
   get '/signup', to: 'users#new'
