@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'authentication'
 
   get '/dashboard', to:  'sessions#dashboard'
+
+  post 'logout', to: 'sessions#logout'
 end

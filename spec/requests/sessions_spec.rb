@@ -12,7 +12,7 @@ RSpec.describe "Session requests", type: :request do
     end
 
     it "should not display authorized pages when not logged in, redirect instead." do
-        get authorized_path
+        get dashboard_path
         expect(response.code).to eq "302"
     end
 
@@ -20,7 +20,7 @@ RSpec.describe "Session requests", type: :request do
         testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
         expect(User.count).to eq 1
         post login_path, params: {email: "john@testUser.com", password: "test123"}
-        expect(response).to redirect_to(action: "page_requires_login")
+        expect(response).to redirect_to(action: "dashboard")
     end
 
     it "should render the login page if the email is blank." do
@@ -49,5 +49,16 @@ RSpec.describe "Session requests", type: :request do
         expect(User.count).to eq 1
         post login_path, params: {email: "john@testUser.com", password: "Invalid password"}
         expect(response).to redirect_to(action: "create")
+    end
+
+    it "should render the welcome page after successful logout and dashboard access cannot be accessed." do
+        testUser = User.create(name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123")
+        expect(User.count).to eq 1
+        post login_path, params: {email: "john@testUser.com", password: "test123"}
+        expect(response).to redirect_to(action: "dashboard")
+        post logout_path
+        expect(response).to redirect_to(action: "welcome")
+        get dashboard_path
+        expect(response.code).to eq "302"
     end
 end
