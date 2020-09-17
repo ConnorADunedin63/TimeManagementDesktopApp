@@ -38,4 +38,9 @@ class SessionsController < ApplicationController
 
   def dashboard
   end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to welcome_path
+  end
 end

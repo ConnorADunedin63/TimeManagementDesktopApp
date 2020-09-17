@@ -9,7 +9,7 @@ RSpec.describe "User requests", type: :request do
 
         it "should create a user and redirect to the dashboard." do
             post signup_path, params: {user: {name: "John Doe", email: "john@testUser.com", password: "test123", password_confirmation: "test123"}}
-            expect(response).to redirect_to(action: "page_requires_login", controller: "sessions")
+            expect(response).to redirect_to(action: "dashboard", controller: "sessions")
         end
     end
 end
