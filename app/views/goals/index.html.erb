@@ -1,2 +1,43 @@
-<h1>Goals#index</h1>
-<p>Find me in app/views/goals/index.html.erb</p>
+<div class="outer_container">
+    <%= render "layouts/navbar" %>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1 class="white-text center">Goals</h1>
+                <div class="card medium">
+                    <div class="card-content">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Due Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <% if @goals.any? %>
+                            <tbody>
+                                <% @goals.each do |g| %>
+                                    <tr>
+                                        <td><%= g.name %></td>
+                                        <td><%= g.description %></td>
+                                        <td><%= g.due_date %></td>
+                                        <td></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                            <% else %>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">No Goals to Display!</td>
+                                </tr>
+                            </tbody>
+                            <% end %>
+                        </table>
+                    </div>
+                </div>
+                <%= link_to "New Goal", new_goal_path, class: "btn blue right" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'goals/index'
-
-  get 'goals/new'
-
-  get 'goals/show'
-
-  get 'goals/edit'
-
-  get 'goals/destroy'
-
   get '/welcome', to: 'sessions#welcome'
 
   get '/signup', to: 'users#new'
@@ -23,4 +12,14 @@ Rails.application.routes.draw do
   get '/dashboard', to:  'sessions#dashboard'
 
   post 'logout', to: 'sessions#logout'
+
+  get '/goals', to: 'goals#index'
+
+  get 'goals/new', to: 'goals#new', as: 'new_goal'
+
+  get 'goals/show/:id', to: 'goals#show', as: 'view_goal'
+
+  get 'goals/edit/:id', to: 'goals#edit', as: 'edit_goal'
+
+  get 'goals/destroy'
 end
