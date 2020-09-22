@@ -4,9 +4,14 @@
         <div class="row">
             <div class="col s12">
                 <h1 class="white-text center">New Goal</h1>
+                <%= form_with model: @goal, url: create_goal_path do |f| %>
                 <div class="card medium">
                     <div class="card-content">
-                        <%= form_with model: @goal do |f| %>
+                        <% flash.each do | type, message | %>
+                        <div class="center">
+                            <span class="alert_message"><%= message %></span>
+                        </div>
+                        <% end %>
                         <div class="row">
                             <div class="col s6 input-field">
                                 <%= f.label "Name" %>
@@ -29,10 +34,10 @@
                                 <%= f.text_field :tasks %>
                             </div>
                         </div>
-                        <% end %>
                     </div>
                 </div>
-                <%= link_to "Create Goal", new_goal_path, class: "btn blue right" %>
+                <%= f.submit "Create Goal", class: 'btn blue right' %>
+                <% end %>
             </div>
         </div>
     </div>

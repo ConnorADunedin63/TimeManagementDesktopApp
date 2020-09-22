@@ -9,6 +9,7 @@ class GoalsController < ApplicationController
 
   def create
     @goal = Goal.create(goal_params)
+    @goal.user = current_user
 
     if @goal.save
       # Redirect to the goals page, if successful
@@ -27,6 +28,9 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @goal = Goal.find_by(id: params[:id])
+    @goal.destroy
+    redirect_to goals_path
   end
 
   def goal_params

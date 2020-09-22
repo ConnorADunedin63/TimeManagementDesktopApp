@@ -22,7 +22,7 @@
                                         <td><%= g.name %></td>
                                         <td><%= g.description %></td>
                                         <td><%= g.due_date %></td>
-                                        <td></td>
+                                        <td><%= link_to "Delete", destroy_goal_path(id: g.id), class: 'btn red', method: :post %></td>
                                     </tr>
                                 <% end %>
                             </tbody>

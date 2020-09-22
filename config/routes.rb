@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to:  'sessions#dashboard'
 
-  post 'logout', to: 'sessions#logout'
+  get 'logout', to: 'sessions#logout'
 
   get '/goals', to: 'goals#index'
 
@@ -23,5 +23,5 @@ Rails.application.routes.draw do
 
   get 'goals/edit/:id', to: 'goals#edit', as: 'edit_goal'
 
-  get 'goals/destroy'
+  post 'goals/destroy', to: 'goals#destroy', as: 'destroy_goal'
 end
