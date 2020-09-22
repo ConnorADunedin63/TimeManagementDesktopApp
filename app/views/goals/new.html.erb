@@ -4,40 +4,7 @@
         <div class="row">
             <div class="col s12">
                 <h1 class="white-text center">New Goal</h1>
-                <%= form_with model: @goal, url: create_goal_path do |f| %>
-                <div class="card medium">
-                    <div class="card-content">
-                        <% flash.each do | type, message | %>
-                        <div class="center">
-                            <span class="alert_message"><%= message %></span>
-                        </div>
-                        <% end %>
-                        <div class="row">
-                            <div class="col s6 input-field">
-                                <%= f.label "Name" %>
-                                <%= f.text_field :name %>
-                            </div>
-                            <div class="col s6 input-field">
-                                <%= f.label "Description" %>
-                                <%= f.text_field :description %>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <%= f.label "Due Date" %>
-                                <%= f.datetime_field :due_date %>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 input-field">
-                                <%= f.label "Task (Comma Separated)" %>
-                                <%= f.text_field :tasks %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%= f.submit "Create Goal", class: 'btn blue right' %>
-                <% end %>
+                <%= render "goal_form", edit: true, url: create_goal_path %>
             </div>
         </div>
     </div>

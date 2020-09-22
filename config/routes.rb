@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
   get 'goals/edit/:id', to: 'goals#edit', as: 'edit_goal'
 
-  post 'goals/destroy', to: 'goals#destroy', as: 'destroy_goal'
+  post 'goals/update', to: 'goals#update', as: 'update_goal'
+
+  post 'goals/destroy/:id', to: 'goals#destroy', as: 'destroy_goal'
 end

@@ -1,0 +1,38 @@
+<%= form_with model: @goal, url: url do |f| %>
+<div class="card medium">
+    <div class="card-content">
+        <% flash.each do | type, message | %>
+        <div class="center">
+            <span class="alert_message"><%= message %></span>
+        </div>
+        <% end %>
+        <div class="row">
+            <div class="col s6 input-field">
+                <%= f.label "Name" %>
+                <%= f.text_field :name, disabled: edit ? false : true, value: @goal.name %>
+            </div>
+            <div class="col s6 input-field">
+                <%= f.label "Description" %>
+                <%= f.text_field :description, disabled: edit ? false : true, value: @goal.description %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <%= f.label "Due Date" %>
+                <%= f.datetime_field :due_date, disabled: edit ? false : true, value: @goal.due_date %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 input-field">
+                <%= f.label "Task (Comma Separated)" %>
+                <%= f.text_field :tasks, disabled: edit ? false : true, value: @goal.tasks %>
+            </div>
+        </div>
+    </div>
+</div>
+<% if url == view_goal_path %>
+<%= link_to "Edit Goal", edit_goal_path(@goal), class: 'btn blue right' %>
+<% else%>
+<%= f.submit url == create_goal_path ? "Create Goal" : "Update Goal", class: 'btn blue right' %>
+<% end %>
+<% end %>
