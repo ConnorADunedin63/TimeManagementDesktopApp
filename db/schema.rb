@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20200917033951) do
   create_table "goals", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "end_date"
+    t.datetime "due_date"
     t.string "tasks"
     t.integer "user_id"
     t.datetime "created_at", null: false

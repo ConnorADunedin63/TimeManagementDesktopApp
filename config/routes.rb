@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'goals/new', to: 'goals#new', as: 'new_goal'
 
+  post 'goals/create', to: 'goals#create', as: 'create_goal'
+
   get 'goals/show/:id', to: 'goals#show', as: 'view_goal'
 
   get 'goals/edit/:id', to: 'goals#edit', as: 'edit_goal'

@@ -3,7 +3,7 @@ class CreateGoals < ActiveRecord::Migration[5.1]
     create_table :goals do |t|
       t.string :name
       t.string :description
-      t.datetime :end_date
+      t.datetime :due_date
       t.string :tasks, array: true
       t.references :user, foreign_key: true
 

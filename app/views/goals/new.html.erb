@@ -1,2 +1,39 @@
-<h1>Goals#new</h1>
-<p>Find me in app/views/goals/new.html.erb</p>
+<div class="outer_container">
+    <%= render "layouts/navbar" %>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1 class="white-text center">New Goal</h1>
+                <div class="card medium">
+                    <div class="card-content">
+                        <%= form_with model: @goal do |f| %>
+                        <div class="row">
+                            <div class="col s6 input-field">
+                                <%= f.label "Name" %>
+                                <%= f.text_field :name %>
+                            </div>
+                            <div class="col s6 input-field">
+                                <%= f.label "Description" %>
+                                <%= f.text_field :description %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <%= f.label "Due Date" %>
+                                <%= f.datetime_field :due_date %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <%= f.label "Task (Comma Separated)" %>
+                                <%= f.text_field :tasks %>
+                            </div>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+                <%= link_to "Create Goal", new_goal_path, class: "btn blue right" %>
+            </div>
+        </div>
+    </div>
+</div>
