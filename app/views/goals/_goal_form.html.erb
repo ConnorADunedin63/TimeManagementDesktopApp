@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<% puts url%>
+<%= link_to "Back", goals_path, class: 'btn blue left'%>
 <% if url.include?("/goals/show") %>
 <%= link_to "Edit Goal", edit_goal_path(@goal), class: 'btn blue right' %>
 <% else%>
