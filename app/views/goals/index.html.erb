@@ -22,7 +22,7 @@
                                     <tr>
                                         <td><%= g.name %></td>
                                         <td><%= g.description %></td>
-                                        <td><%= g.due_date %></td>
+                                        <td><%= g.due_date.present? ? g.due_date : "N/A" %></td>
                                         <td><%= link_to "View", view_goal_path(g) %>
                                         <td><%= link_to "Delete", destroy_goal_path(g), class: 'btn red', method: :post %></td> 
                                     </tr>

@@ -23,10 +23,18 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find_by(id: params[:id])
+    if @goal.due_date.present?
+      @due_date = @goal.due_date.to_s[0, @goal.due_date.to_s.size - 7]
+      @due_date[10] = "T"
+    end
   end
 
   def edit
     @goal = Goal.find_by(id: params[:id])
+    if @goal.due_date.present?
+      @due_date = @goal.due_date.to_s[0, @goal.due_date.to_s.size - 7]
+      @due_date[10] = "T"
+    end
   end
 
   def update

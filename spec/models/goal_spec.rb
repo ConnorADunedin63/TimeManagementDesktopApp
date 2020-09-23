@@ -9,6 +9,13 @@ RSpec.describe Goal, type: :model do
       expect(test_goal.save).to eq true
     end
 
+    it "when due_date is blank." do
+      test_user = FactoryBot.create(:user)
+      test_goal = FactoryBot.create(:goal, due_date: nil, user: test_user)
+
+      expect(test_goal.save).to eq true
+    end
+
     it "when description is blank" do
       test_user = FactoryBot.create(:user)
       test_goal = FactoryBot.create(:goal, description: "", user: test_user)
