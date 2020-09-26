@@ -1,6 +1,7 @@
 class GoalsController < ApplicationController
   def index
     @goals = current_user.goals
+    @filter = "All"
   end
 
   def new
