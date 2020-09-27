@@ -6,23 +6,6 @@
                 <h1 class="white-text center">Goals</h1>
                 <div class="card medium">
                     <div class="card-content">
-                        <div class="row">
-                            <div class="col s2 center">
-                                <button class="btn <%= @filter == "All" ? "green" : "blue"%>">All</button>
-                            </div>
-                            <div class="col s2 center">
-                                <button class="btn <%= @filter == "Ongoing" ? "green" : "blue"%>">Ongoing</button>
-                            </div>
-                            <div class="col s2 center">
-                                <button class="btn <%= @filter == "Due" ? "green" : "blue"%>">Due</button>
-                            </div>
-                            <div class="col s2 center">
-                                <button class="btn <%= @filter == "Short Term" ? "green" : "blue"%>">Short Term</button>
-                            </div>
-                            <div class="col s2 center">
-                                <button class="btn <%= @filter == "Long Term" ? "green" : "blue"%>" onpress=<%= puts @filter %>>Long Term</button>
-                            </div>
-                        </div>
                         <table class="centered">
                             <thead>
                                 <tr>
