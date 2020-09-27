@@ -56,7 +56,7 @@ RSpec.describe "Session requests", type: :request do
         expect(User.count).to eq 1
         post login_path, params: {email: "john@testUser.com", password: "test123"}
         expect(response).to redirect_to(action: "dashboard")
-        post logout_path
+        get logout_path
         expect(response).to redirect_to(action: "welcome")
         get dashboard_path
         expect(response.code).to eq "302"
