@@ -23,6 +23,12 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s12">
+                <%= f.label "Label"%>
+                <%= f.select :label, options_for_select(Goal.labels.map {|k, v| [k.humanize.capitalize, k]}, selected: @goal.label), {}, {class: "label_dropdown", disabled: edit ? false : true} %>
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12 input-field">
                 <%= f.label "Task (Comma Separated)", class: @goal.tasks.present? ? "active" : "" %>
                 <%= f.text_field :tasks, disabled: edit ? false : true, value: @goal.tasks %>
