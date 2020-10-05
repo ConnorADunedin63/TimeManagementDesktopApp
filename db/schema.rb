@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200917033951) do
+ActiveRecord::Schema.define(version: 20201005210905) do
 
   create_table "goals", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20200917033951) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "label", default: 0
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 

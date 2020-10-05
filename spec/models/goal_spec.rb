@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Goal, type: :model do
+  context "should have label attribute" do
+    it "of 0 by default" do
+      test_user = FactoryBot.create(:user)
+      test_goal = FactoryBot.create(:goal, user: test_user)
+
+      expect(test_goal.label).to eq "na"
+      expect(test_goal.save).to eq true
+    end
+  end
+
   context "should be valid" do
     it "when associated with a user, name, description and due date is present." do
       test_user = FactoryBot.create(:user)
@@ -21,6 +31,21 @@ RSpec.describe Goal, type: :model do
       test_goal = FactoryBot.create(:goal, description: "", user: test_user)
 
       expect(test_goal.save).to eq true
+    end
+
+    it "with the different label values" do
+      test_user = FactoryBot.create(:user)
+      test_goal_na = FactoryBot.create(:goal, user: test_user)
+      test_goal_personal = FactoryBot.create(:goal, :personal, user: test_user)
+      test_goal_work = FactoryBot.create(:goal, :work, user: test_user)
+      test_goal_study = FactoryBot.create(:goal, :study, user: test_user)
+
+
+      expect(test_user.goals.count).to eq 4
+      expect(test_goal_na.save).to eq true
+      expect(test_goal_personal.save).to eq true
+      expect(test_goal_work.save).to eq true
+      expect(test_goal_study.save).to eq true
     end
   end 
 
