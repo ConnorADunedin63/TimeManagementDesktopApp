@@ -24,5 +24,17 @@ FactoryBot.define do
       name { "Due goal" }
       due_date { Time.zone.now - 5.days }
     end
+
+    trait :personal do
+      label { 1 }
+    end
+
+    trait :work do
+      label { 2 }
+    end
+
+    trait :study do
+      label { 3 }
+    end
   end
 end
